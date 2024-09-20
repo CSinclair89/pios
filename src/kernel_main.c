@@ -11,7 +11,7 @@ void kernel_main() {
 	char *i = bssstart;
 
 	for (; i < bssend; i++) { 
-		*i = 1; 
+		*i = 0; 
 	}
 
 	while(1){
