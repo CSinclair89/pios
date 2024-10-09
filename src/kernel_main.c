@@ -16,9 +16,10 @@ void waitFor1ms() {
 	while (getTimerCount() < toc) {}
 }
 
-void putc(int data) {
+int putc(int data) {
 	volatile  unsigned int *mu10 = (volatile  unsigned int *)MU_10;
 	*mu10 = (unsigned int)(data & 0xFF);
+	return data;
 }
 
 void kernel_main() {
@@ -31,12 +32,11 @@ void kernel_main() {
 	char *i = bssStart;
 	
 	waitFor1ms();
+	esp_printf(putc, "Hello! Number: %d\n", 42);
 
 	for (; i < bssEnd; i++) {
 	       	*i = 0;
 	}
-	
-	esp_printf(putc, "Hello! Number: %d\n", 42);
 
 	while(1){
     }
