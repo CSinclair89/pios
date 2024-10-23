@@ -28,7 +28,7 @@ struct listElement *allocateElement() {
 }
 
 // function to release an element back to the pool
-void releaseElement(struct listElement *element) {
+void freeElement(struct listElement *element) {
 	for (int i = 0; i < ELEMENT_SIZE; i++) {
 		if (&elementPool[i] == element) {
 			elementInUse[i] = 0; // mark element as free
@@ -57,7 +57,7 @@ void listRemove(struct listElement *element) {
 	// removing head of the list
 	if (listHead == element) {
 		listHead = element->next;
-		releaseElement(element);
+		freeElement(element);
 		return;
 	}
 
@@ -68,7 +68,7 @@ void listRemove(struct listElement *element) {
 	// if element is found, unlink it
 	if (curr ->next == element) {
 		curr->next = element->next;
-		releaseElement(element);
+		freeElement(element);
 	}
 }
 

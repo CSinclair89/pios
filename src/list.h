@@ -20,7 +20,7 @@ extern int elementInUse[ELEMENT_SIZE];
 void init_list();
 struct listElement *allocateElement(void);
 
-void releaseElement(struct listElement *element);
+void freeElement(struct listElement *element);
 void listAdd(struct listElement **listHead, struct listElement *newElement);
 void listRemove(struct listElement *element);
 void printList();

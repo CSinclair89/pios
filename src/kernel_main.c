@@ -2,6 +2,7 @@
 #include "list.h"
 #include "serial.h"
 #include "timer.h"
+#include "page.h"
 
 char glbl[128];
 
@@ -26,7 +27,7 @@ void kernel_main() {
 	// BEGIN LINKED LIST SECTION //
 	///////////////////////////////
 			
-	// initialize the list
+	// initialize the normal linked list
 	init_list();
 
 	// allocate memory for list elements
@@ -64,6 +65,23 @@ void kernel_main() {
 	// END LINKED LIST SECTION //
 	/////////////////////////////
 	
+	////////////////////////////////
+	// BEGIN PAGE FRAME ALLOCATOR //
+	////////////////////////////////
+
+	// initialize page frame allocator	
+	//init_pfa_list();
+	
+	// define free list
+	//freeList = physPageArray[0];
+
+	// test print initial state
+	// printFreeList();
+	
+	//////////////////////////////
+	// END PAGE FRAME ALLOCATOR //
+	//////////////////////////////
+
 	// Set bss segment to zero
 	for (; i < bssEnd; i++) {
 	       	*i = 0;
