@@ -74,10 +74,10 @@ void kernel_main() {
 	////////////////////////////////
 
 	// initialize page frame allocator	
-//	init_pfa_list();
+	init_pfa_list();
 
 	// test print of pfa list
-//	printPhysAddr();
+	printPhysAddr();
 
 	// define free list
 //	freeList = &physPageArray[0];
@@ -99,8 +99,8 @@ void kernel_main() {
 	// END PAGE FRAME ALLOCATOR //
 	//////////////////////////////
 
-	// Call MMU
-	mmu_on();
+	// Call MMU - PROBLEM: there is no mmu_on() function
+//	mmu_on();
 
 	while(1){
     }
