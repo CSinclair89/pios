@@ -1,7 +1,7 @@
 #include "page.h"
 #include "rprintf.h"
 
-# define PAGE_SIZE 2048
+#define PAGE_SIZE 2048
 
 struct ppage physPageArray[PAGE_COUNT];
 struct ppage *freeList = NULL;
@@ -13,16 +13,17 @@ void init_pfa_list(void) {
 			physPageArray[i + 1].prev = &physPageArray[i]; // backward link
 		}
 
-		physPageArray[i].physAddr = (void *)&i; // test data value
+		physPageArray[i].physAddr = (void *)(i * PAGE_SIZE); // test data value
 	}
 	physPageArray[0].prev = NULL; // first page has no previous
 	physPageArray[PAGE_COUNT - 1].next = NULL; // last page has no next
-	esp_printf(putc, "Page 0, Address: %p\n", &physPageArray[0].physAddr);
+	
+	freeList = &physPageArray[0];
 }
 
 void printPhysAddr(void) {
 	for (int i = 0; i < 10; i++) {
-		esp_printf(putc, "Page %d, Physical Address: %p\n", i, physPageArray[i].physAddr);
+		esp_printf(putc, "Page %d, Physical Address: 0x%x\n", i, (unsigned int)physPageArray[i].physAddr);
 	}
 }
 

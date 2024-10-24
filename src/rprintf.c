@@ -241,7 +241,7 @@ try_next:
          case 'x':
               outnum( (long)va_arg(argp, int), 16L);
               continue;
-
+	      
          case 's':
               outs( va_arg( argp, charptr));
               continue;
