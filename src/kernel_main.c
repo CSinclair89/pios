@@ -22,10 +22,10 @@ void kernel_main() {
 	for (; i < bssEnd; i++) *i = 0;
 
 	// System timer call	
-	waitFor1ms();
+	waitFor(1000000);
 
 	// Serial port test  message
-	esp_printf(putc, "Hello! Number: %d\n", 42);
+	esp_printf(putc, "Test print. Hello! Number: %d\n", 42);
 
 	///////////////////////////////
 	// BEGIN LINKED LIST SECTION //
@@ -52,18 +52,45 @@ void kernel_main() {
 	listAdd(&listHead, c);
 	listAdd(&listHead, d);
 
-	esp_printf(putc, "Initial list: ");
+	// the fun part
+	waitFor(1000000);
+	esp_printf(putc, "\nLoading Initial Linked List");
+	waitFor(500000);
+	esp_printf(putc, ".");
+	waitFor(500000);
+	esp_printf(putc, ".");
+	waitFor(500000);
+	esp_printf(putc, ".\n");
+	waitFor(2300000);
 	printList();
 
 	listRemove(b);
-	esp_printf(putc, "List after removing 20: ");
+	waitFor(500000);
+	esp_printf(putc, "\nLoading linked list after removing 20");
+	waitFor(500000);
+	esp_printf(putc, ".");
+	waitFor(500000);
+	esp_printf(putc, ".");
+	waitFor(1000000);
+	esp_printf(putc, ".\n");
+	waitFor(1500000);
 	printList();
 
 	listRemove(a);
 	listRemove(c);
 	listRemove(d);
-	esp_printf(putc, "List after removing all: ");
+	waitFor(1000000);
+	esp_printf(putc, "\nLoading linked list after removing all");
+	waitFor(200000);
+	esp_printf(putc, ".");
+	waitFor(700000);
+	esp_printf(putc, ".");
+	waitFor(1000000);
+	esp_printf(putc, ".\n");
+	waitFor(500000);
 	printList();
+
+	// end fun part
 	
 	/////////////////////////////
 	// END LINKED LIST SECTION //
@@ -77,6 +104,15 @@ void kernel_main() {
 	init_pfa_list();
 
 	// test print of pfa list
+	waitFor(1000000);
+	esp_printf(putc, "\nLoading Page Frame Allocation list");
+	waitFor(500000);
+	esp_printf(putc, ".");
+	waitFor(200000);
+	esp_printf(putc, ".");
+	waitFor(1500000);
+	esp_printf(putc, ".\n");
+	waitFor(2400000);
 	printPhysAddr();
 
 	// define free list
@@ -101,6 +137,10 @@ void kernel_main() {
 
 	// Call MMU - PROBLEM: there is no mmu_on() function
 //	mmu_on();
+
+	// reminder to end program
+	waitFor(1000000);
+	esp_printf(putc, "\nPress Ctrl + C to terminate the signal...\n");
 
 	while(1){
     }

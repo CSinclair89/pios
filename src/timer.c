@@ -9,9 +9,9 @@ unsigned long getTimerCount() {
 }
 
 // Method to wait for a few seconds
-void waitFor1ms() {
+void waitFor(unsigned long toc) {
         unsigned long tic = getTimerCount();
-        unsigned long toc = tic + 1000000;
+        toc = tic + toc;
 
         while (getTimerCount() < toc) {}
 }
