@@ -20,6 +20,7 @@ OBJS = \
 	serial.o \
 	timer.o \
 	page.o \
+	mmu.o \
 
 
 OBJ = $(patsubst %,$(ODIR)/%,$(OBJS))

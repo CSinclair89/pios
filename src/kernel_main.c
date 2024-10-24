@@ -3,6 +3,7 @@
 #include "serial.h"
 #include "timer.h"
 #include "page.h"
+#include "mmu.h"
 
 char glbl[128];
 
@@ -17,6 +18,9 @@ void kernel_main() {
 	bssEnd = &__bss_end;
 	char *i = bssStart;
 	
+	// Set bss segment to 0
+	for (; i < bssEnd; i++) *i = 0;
+
 	// System timer call	
 	waitFor1ms();
 
@@ -70,22 +74,33 @@ void kernel_main() {
 	////////////////////////////////
 
 	// initialize page frame allocator	
-	//init_pfa_list();
-	
+//	init_pfa_list();
+
+	// test print of pfa list
+//	printPhysAddr();
+
 	// define free list
-	//freeList = physPageArray[0];
+//	freeList = &physPageArray[0];
 
 	// test print initial state
-	// printFreeList();
+//	printFreeList();
+
+	// allocate 10 pages and print again
+//	struct ppage *allocatedPages = allocatePhysPages(10);
+//	esp_printf(putc, "Allocated 10 pages:\n");
+//	printFreeList();
+
+	// free the pages and print one last time
+//	freePhysPages(allocatedPages);
+//	esp_printf(putc, "Freed the previous 10 pages:\n");
+//	printFreeList();
 	
 	//////////////////////////////
 	// END PAGE FRAME ALLOCATOR //
 	//////////////////////////////
 
-	// Set bss segment to zero
-	for (; i < bssEnd; i++) {
-	       	*i = 0;
-	}
+	// Call MMU
+	mmu_on();
 
 	while(1){
     }
