@@ -26,15 +26,3 @@ void listRemove(struct listElement *element);
 void printList();
 
 #endif
-
-
-
-
-
-
-
-
-
-
-
-

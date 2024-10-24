@@ -88,7 +88,7 @@ void printFreeList(void) {
 	}	
 	esp_printf(putc, "Free List: ");
 	while (curr != NULL) {
-		esp_printf(putc, "[%d] Physical Address: %p, prev: %p, next: %p -> ", count, curr->physAddr, curr->prev, curr->next);
+		esp_printf(putc, "[%d] Physical Address: %p, prev: %p, next: %p -> \n", count, curr->physAddr, curr->prev, curr->next);
 		if (count > PAGE_COUNT - 1) {
 			esp_printf(putc, "Error: Detected circular reference.\n");
 			break;
