@@ -61,7 +61,7 @@ void freePhysPages(struct ppage *ppageList) {
 	while (last->next != NULL) last = last->next; // iterate to end of list
 
 	// check if the block is already part of the free list
-	if (last->next == freeList || ppageList == freeList || last == freeList || last == freeList->prev) {
+	if (last->next == freeList || ppageList == freeList) {
 		esp_printf(putc, "Error: trying to free pages already in free list.\n");
 		return;
 	}
@@ -75,6 +75,7 @@ void freePhysPages(struct ppage *ppageList) {
 
 	// ensure previous pointer of head is null
 	freeList->prev = NULL;
+	last->next = NULL;
 
 	esp_printf(putc, "Freed pages added. New freeList head: 0x%x\n", freeList->physAddr);
 }
