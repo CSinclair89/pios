@@ -48,7 +48,7 @@ struct ppage *allocatePhysPages(unsigned int npages) {
 
 	start->prev = NULL;
 
-	esp_printf(putc, "Allocated %d pages. New freeList head: %p\n", npages, freeList);
+	esp_printf(putc, "Allocated %d pages. New freeList head: 0x%x\n", npages, freeList->physAddr);
 	return start;
 
 }
@@ -61,7 +61,7 @@ void freePhysPages(struct ppage *ppageList) {
 	while (last->next != NULL) last = last->next; // iterate to end of list
 
 	// check if the block is already part of the free list
-	if (last == freeList || ppageList == freeList) {
+	if (last->next == freeList || ppageList == freeList || last == freeList || last == freeList->prev) {
 		esp_printf(putc, "Error: trying to free pages already in free list.\n");
 		return;
 	}
@@ -76,7 +76,7 @@ void freePhysPages(struct ppage *ppageList) {
 	// ensure previous pointer of head is null
 	freeList->prev = NULL;
 
-	esp_printf(putc, "Freed pages added. New freeList head: %p\n", freeList);
+	esp_printf(putc, "Freed pages added. New freeList head: 0x%x\n", freeList->physAddr);
 }
 
 void printFreeList(void) {
@@ -86,9 +86,9 @@ void printFreeList(void) {
 		esp_printf(putc, "Free List is empty.\n");
 		return;
 	}	
-	esp_printf(putc, "Free List: ");
+	esp_printf(putc, "Free List:\n");
 	while (curr != NULL) {
-		esp_printf(putc, "[%d] Physical Address: %p, prev: %p, next: %p -> \n", count, curr->physAddr, curr->prev, curr->next);
+		esp_printf(putc, "[%d] Physical Address: 0x%x, prev: 0x%x, next: 0x%x\n", count, curr->physAddr, curr->prev->physAddr, curr->next->physAddr);
 		if (count > PAGE_COUNT - 1) {
 			esp_printf(putc, "Error: Detected circular reference.\n");
 			break;

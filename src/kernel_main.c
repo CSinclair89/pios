@@ -22,7 +22,7 @@ void kernel_main() {
 	for (; i < bssEnd; i++) *i = 0;
 
 	// System timer call	
-	waitFor(1000000);
+//	waitFor(1000000);
 
 	// Serial port test  message
 	esp_printf(putc, "Test print. Hello! Number: %d\n", 42);
@@ -55,39 +55,39 @@ void kernel_main() {
 	// the fun part
 	waitFor(1000000);
 	esp_printf(putc, "\nLoading Initial Linked List");
-	waitFor(500000);
+//	waitFor(500000);
 	esp_printf(putc, ".");
-	waitFor(500000);
+//	waitFor(500000);
 	esp_printf(putc, ".");
-	waitFor(500000);
+//	waitFor(500000);
 	esp_printf(putc, ".\n");
-	waitFor(2300000);
+//	waitFor(2300000);
 	printList();
 
 	listRemove(b);
-	waitFor(500000);
+//	waitFor(500000);
 	esp_printf(putc, "\nLoading linked list after removing 20");
-	waitFor(500000);
+//	waitFor(500000);
 	esp_printf(putc, ".");
-	waitFor(500000);
+//	waitFor(500000);
 	esp_printf(putc, ".");
-	waitFor(1000000);
+//	waitFor(1000000);
 	esp_printf(putc, ".\n");
-	waitFor(1500000);
+//	waitFor(1500000);
 	printList();
 
 	listRemove(a);
 	listRemove(c);
 	listRemove(d);
-	waitFor(1000000);
+//	waitFor(1000000);
 	esp_printf(putc, "\nLoading linked list after removing all");
-	waitFor(200000);
+//	waitFor(200000);
 	esp_printf(putc, ".");
-	waitFor(700000);
+//	waitFor(700000);
 	esp_printf(putc, ".");
-	waitFor(1000000);
+//	waitFor(1000000);
 	esp_printf(putc, ".\n");
-	waitFor(500000);
+//	waitFor(500000);
 	printList();
 
 	// end fun part
@@ -104,32 +104,32 @@ void kernel_main() {
 	init_pfa_list();
 
 	// test print of pfa list
-	waitFor(1000000);
+//	waitFor(1000000);
 	esp_printf(putc, "\nLoading Page Frame Allocation list");
-	waitFor(500000);
+//	waitFor(500000);
 	esp_printf(putc, ".");
-	waitFor(200000);
+//	waitFor(200000);
 	esp_printf(putc, ".");
-	waitFor(1500000);
+//	waitFor(1500000);
 	esp_printf(putc, ".\n");
-	waitFor(2400000);
+//	waitFor(2400000);
 	printPhysAddr();
 
 	// define free list
-//	freeList = &physPageArray[0];
+	freeList = &physPageArray[0];
 
 	// test print initial state
-//	printFreeList();
+	printFreeList();
 
 	// allocate 10 pages and print again
-//	struct ppage *allocatedPages = allocatePhysPages(10);
-//	esp_printf(putc, "Allocated 10 pages:\n");
-//	printFreeList();
+	struct ppage *allocatedPages = allocatePhysPages(10);
+	esp_printf(putc, "\nAllocated 10 pages:\n");
+	printFreeList();
 
 	// free the pages and print one last time
-//	freePhysPages(allocatedPages);
-//	esp_printf(putc, "Freed the previous 10 pages:\n");
-//	printFreeList();
+	freePhysPages(allocatedPages);
+	esp_printf(putc, "\nFreed the previous 10 pages:\n");
+	printFreeList();
 	
 	//////////////////////////////
 	// END PAGE FRAME ALLOCATOR //
@@ -139,7 +139,7 @@ void kernel_main() {
 //	mmu_on();
 
 	// reminder to end program
-	waitFor(1000000);
+//	waitFor(1000000);
 	esp_printf(putc, "\nPress Ctrl + C to terminate the signal...\n");
 
 	while(1){
