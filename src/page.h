@@ -16,7 +16,6 @@ extern struct ppage physPageArray[PAGE_COUNT];
 extern struct ppage *freeList;
 
 void init_pfa_list(void);
-void printPhysAddr(void);
 struct ppage *allocatePhysPages(unsigned int npages);
 void freePhysPages(struct ppage *ppageList);
 void printFreeList(void);

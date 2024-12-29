@@ -17,10 +17,14 @@ OBJS = \
 	kernel_main.o \
 	rprintf.o \
 	list.o \
+	hashmap.o \
 	serial.o \
 	timer.o \
 	page.o \
 	mmu.o \
+	test.o \
+	string.o \
+	algos.o \
 
 
 OBJ = $(patsubst %,$(ODIR)/%,$(OBJS))

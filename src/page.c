@@ -1,7 +1,7 @@
 #include "page.h"
 #include "rprintf.h"
 
-#define PAGE_SIZE 2048
+#define PAGE_SIZE (2 * 1024 * 1024)
 
 struct ppage physPageArray[PAGE_COUNT];
 struct ppage *freeList = NULL;
@@ -19,12 +19,6 @@ void init_pfa_list(void) {
 	physPageArray[PAGE_COUNT - 1].next = NULL; // last page has no next
 	
 	freeList = &physPageArray[0];
-}
-
-void printPhysAddr(void) {
-	for (int i = 0; i < 10; i++) {
-		esp_printf(putc, "Page %d, Physical Address: 0x%x\n", i, (unsigned int)physPageArray[i].physAddr);
-	}
 }
 
 struct ppage *allocatePhysPages(unsigned int npages) {
