@@ -25,7 +25,7 @@ void enqueue(struct Queue *queue, int val) {
 		esp_printf(putc, "Queue is full.\n");
 		return;
 	}
-	queue->rear = (queue->rear + 1) & QUEUE_CAP;
+	queue->rear = (queue->rear + 1) % QUEUE_CAP;
 	queue->data[queue->rear] = val;
 	queue->size++;
 	return;
@@ -40,7 +40,7 @@ int dequeue(struct Queue *queue) {
 }
 
 int peek(struct Queue *queue) {
-	if (isEmpty(queue)) {
+	if (isEmpty(queue) == 1) {
 		esp_printf(putc, "Queue is empty.\n");
 		return -1;
 	}
