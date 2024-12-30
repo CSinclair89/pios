@@ -5,6 +5,7 @@
 #include "serial.h"
 
 #define PAGE_COUNT 128
+#define uintptr_t unsigned long long
 
 struct ppage {
 	struct ppage *next;

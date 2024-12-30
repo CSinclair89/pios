@@ -5,6 +5,7 @@
 #include "hashmap.h"
 #include "string.h"
 #include "algos.h"
+#include "queue.h"
 
 void listTests() {
 	
@@ -116,6 +117,38 @@ void mapTests() {
 
 }
 
+void queueTests() {
+
+	esp_printf(putc, "--QUEUE TEST--\n\n");
+
+	struct Queue queue;
+	init_queue(&queue);
+
+	enqueue(&queue, 10);
+	enqueue(&queue, 20);
+	enqueue(&queue, 30);
+
+	esp_printf(putc, "Queue elements: ");
+	printQueue(&queue);
+
+	esp_printf(putc, "\n");
+
+	esp_printf(putc, "Dequeued: %d\n", dequeue(&queue));
+
+	esp_printf(putc, "\n");
+
+	esp_printf(putc, "Queue after dequeue: ");
+	printQueue(&queue);
+
+	esp_printf(putc, "\n");
+
+	esp_printf(putc, "Front element: %d\n", peek(&queue));
+
+	esp_printf(putc, "\n");
+	esp_printf(putc, "Queue test completed.\n");
+
+}
+
 void twoSumTest() {
 
 	esp_printf(putc, "--TWO SUM TEST--\n\n");
@@ -123,12 +156,15 @@ void twoSumTest() {
 	int nums[4] = {7, 2, 11, 15};
 	int target = 9;
 	char key[32], diffStr[32];
+	int numSize = sizeof(nums) / sizeof(nums[0]);
 
 	esp_printf(putc, "Two Sum test w/ HashMap implementation:\n");
 	esp_printf(putc, "Input array: [7, 2, 11, 15]\nTarget: 9\nExpected indices: {0, 1}\nReturned indices: ");
 
-	twoSum(nums, target, key, diffStr);
+	twoSum(nums, numSize, target, key, diffStr);
 }
+
+
 
 
 

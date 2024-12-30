@@ -2,12 +2,12 @@
 #include "hashmap.h"
 #include "list.h"
 
-int* twoSum(int *nums, int target, char *key, char *diffStr) {
+int* twoSum(int *nums, int numSize, int target, char *key, char *diffStr) {
 
 	HashMap map;
 	init_hashmap(&map);
 
-        for (int i = 0; i < (sizeof(nums) / sizeof(nums[0])); i++) {
+        for (int i = 0; i < numSize; i++) {
                 int diff = target - nums[i];
 
                 // convert diff to a string
@@ -20,5 +20,6 @@ int* twoSum(int *nums, int target, char *key, char *diffStr) {
                 // add current number to hash map
                 intToStr(nums[i], key, sizeof(key));
                 addEntry(&map, key, i);
-  
+	}
+	return 0;
 }

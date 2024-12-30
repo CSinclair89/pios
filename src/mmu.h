@@ -1,5 +1,5 @@
 
-
+#define uintptr_t unsigned long long
 
 // L1 table structure
 struct table_descriptor_stage1 {

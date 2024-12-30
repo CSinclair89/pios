@@ -11,5 +11,7 @@
 
 void listTests();
 void mapTests();
+void twoSumTest();
+void queueTests();
 
 #endif

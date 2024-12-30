@@ -13,7 +13,7 @@ void init_pfa_list(void) {
 			physPageArray[i + 1].prev = &physPageArray[i]; // backward link
 		}
 
-		physPageArray[i].physAddr = (void *)(i * PAGE_SIZE); // test data value
+		physPageArray[i].physAddr = (void *)(uintptr_t)(i * PAGE_SIZE); // test data value
 	}
 	physPageArray[0].prev = NULL; // first page has no previous
 	physPageArray[PAGE_COUNT - 1].next = NULL; // last page has no next
