@@ -34,6 +34,7 @@ OBJS = \
 	string.o \
 	algos.o \
 	queue.o \
+	stack.o \
 
 
 OBJ = $(patsubst %,$(ODIR)/%,$(OBJS))

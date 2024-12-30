@@ -3,25 +3,25 @@
 #include "serial.h"
 
 // initialize queue
-void init_queue(struct Queue *queue) {
+void queueInit(struct Queue *queue) {
 	queue->front = 0;
 	queue->rear = -1;
 	queue->size = 0;
 }
 
 // check is queue is empty
-int isEmpty(struct Queue *queue) {
+int queueIsEmpty(struct Queue *queue) {
 	if (queue->size == 0) return 1;
 	return 0;
 }
 
-int isFull(struct Queue *queue) {
+int queueIsFull(struct Queue *queue) {
 	if (queue->size == QUEUE_CAP) return 1;
 	return 0;
 }
 
 void enqueue(struct Queue *queue, int val) {
-	if (isFull(queue) == 1) {
+	if (queueIsFull(queue) == 1) {
 		esp_printf(putc, "Queue is full.\n");
 		return;
 	}
@@ -32,23 +32,23 @@ void enqueue(struct Queue *queue, int val) {
 }
 
 int dequeue(struct Queue *queue) {
-	if (isEmpty(queue) == 1) return -1;
+	if (queueIsEmpty(queue) == 1) return -1;
 	int val = queue->data[queue->front];
 	queue->front = (queue->front + 1) % QUEUE_CAP;
 	queue->size--;
 	return val;
 }
 
-int peek(struct Queue *queue) {
-	if (isEmpty(queue) == 1) {
+int queuePeek(struct Queue *queue) {
+	if (queueIsEmpty(queue) == 1) {
 		esp_printf(putc, "Queue is empty.\n");
 		return -1;
 	}
 	return queue->data[queue->front];
 }
 
-void printQueue(struct Queue *queue) {
-	if (isEmpty(queue) == 1) {
+void queuePrint(struct Queue *queue) {
+	if (queueIsEmpty(queue) == 1) {
 		esp_printf(putc, "Queue is empty.\n");
 		return;
 	}

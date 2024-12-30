@@ -8,10 +8,12 @@
 #include "serial.h"
 #include "string.h"
 #include "algos.h"
+#include "stack.h"
 
 void listTests();
 void mapTests();
 void twoSumTest();
 void queueTests();
+void stackTests();
 
 #endif

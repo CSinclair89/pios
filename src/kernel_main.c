@@ -93,6 +93,8 @@ void kernel_main() {
 	esp_printf(putc, "\n");
 	queueTests();
 	esp_printf(putc, "\n");
+	stackTests();
+	esp_printf(putc, "\n");
 
 	// test system timer and reminder to terminate program
 	waitFor(1000000);

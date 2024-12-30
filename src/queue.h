@@ -10,12 +10,12 @@ struct Queue {
 	int size;
 };
 
-void init_queue(struct Queue *queue);
-int isFull(struct Queue *queue);
-int isEmpty(struct Queue *queue);
+void queueInit(struct Queue *queue);
+int queueIsFull(struct Queue *queue);
+int queueIsEmpty(struct Queue *queue);
 void enqueue(struct Queue *queue, int val);
 int dequeue(struct Queue *queue);
-int peek(struct Queue *queue);
-void printQueue(struct Queue *queue);
+int queuePeek(struct Queue *queue);
+void queuePrint(struct Queue *queue);
 
 #endif
