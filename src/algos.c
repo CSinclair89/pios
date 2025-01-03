@@ -1,6 +1,5 @@
 #include "string.h"
-#include "hashmap.h"
-#include "list.h"
+#include "ds.h"
 #include "rprintf.h"
 #include "serial.h"
 
