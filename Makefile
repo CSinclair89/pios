@@ -24,8 +24,7 @@ OBJS = \
 	boot.o \
 	kernel_main.o \
 	rprintf.o \
-	list.o \
-	hashmap.o \
+	ds.o \
 	serial.o \
 	timer.o \
 	page.o \
@@ -33,8 +32,6 @@ OBJS = \
 	test.o \
 	string.o \
 	algos.o \
-	queue.o \
-	stack.o \
 
 
 OBJ = $(patsubst %,$(ODIR)/%,$(OBJS))

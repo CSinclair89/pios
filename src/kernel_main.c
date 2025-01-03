@@ -4,8 +4,6 @@
 #include "page.h"
 #include "mmu.h"
 #include "test.h"
-#include "hashmap.h"
-#include "string.h"
 
 char glbl[128];
 // extern struct table_descriptor_stage1 L1table[512];
@@ -94,6 +92,10 @@ void kernel_main() {
 	queueTests();
 	esp_printf(putc, "\n");
 	stackTests();
+	esp_printf(putc, "\n");
+	setTests();
+	esp_printf(putc, "\n");
+	heapTests();
 	esp_printf(putc, "\n");
 
 	// test system timer and reminder to terminate program

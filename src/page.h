@@ -1,9 +1,6 @@
 #ifndef PAGE_H
 #define PAGE_H
 
-#include "rprintf.h"
-#include "serial.h"
-
 #define PAGE_COUNT 128
 #define uintptr_t unsigned long long
 

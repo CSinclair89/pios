@@ -1,9 +1,6 @@
 #ifndef __RPRINTF_H__
 #define __RPRINTF_H__
 
-
-//#include <ctype.h>
-//#include <string.h>
 #include <stdarg.h>
 
 typedef unsigned int  size_t;

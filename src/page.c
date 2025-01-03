@@ -1,5 +1,6 @@
 #include "page.h"
 #include "rprintf.h"
+#include "serial.h"
 
 #define PAGE_SIZE (2 * 1024 * 1024)
 
